@@ -6,10 +6,14 @@ tf.disable_v2_behavior()
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-@app.route("/", methods = ["GET","POST"])
+@app.route("/")
 def index():
+    return render_template("index.html")
+
+@app.route("/elephanthumanpredictor", methods = ["GET","POST"])
+def elephanthumanpredictor():
     if request.method == "GET":
-        return render_template('index.html')
+        return render_template('elephanthumanpredictor.html')
     else:
         userHeight = request.form["Height"]
         userWeight = request.form["Weight"]
