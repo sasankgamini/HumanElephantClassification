@@ -18,9 +18,10 @@ def elephanthumanpredictor():
         userHeight = request.form["Height"]
         userWeight = request.form["Weight"]
         print(userHeight,userWeight)
-        return KNNpredictor(float(userHeight),float(userWeight))
+        answer = KNNpredictornumerical(float(userHeight),float(userWeight))
+        return answer
 
-def KNNpredictor(height, weight):
+def KNNpredictornumerical(height, weight):
     file = pd.read_csv("ElephantHumanDataset.txt")
     inputData = file.drop("Class",1)
     outputData = file["Class"]
@@ -53,6 +54,8 @@ def KNNpredictor(height, weight):
     # print(trainclasses[predictions])
     sess.close()
     return trainclasses[predictions]
+
+
 
 
 
